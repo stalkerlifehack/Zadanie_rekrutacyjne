@@ -1,0 +1,9 @@
+12 i 31 linijka - hashowanie hasła w md5 jest niewystarczające na dzisiejsze standardy bezpieczeństwa, lepiej użyć wbudowanej funkcji w Laravel "Hash::make($passwd)"
+
+Brak walidacji hasła tj. na ten moment można podać hasło np. "123" i zostanie zapisane. Nie powinno być takiej możliwości. Hasło powinno być trudne do odgadnięcia/złamania. Można zastosować wyrażenie regularne "/^(?=[^a-z\n]*[a-z])(?=[^A-Z\n]*[A-Z])(?=[^\d\n]*\d)(?=[^!@?\n]*[!@?]).{10,}$/" Nakazuje ono, że hasło musi mieć jedną dużą i małą litere, cyfrę i znak specjalny. Min długość 10 znaków.
+
+Funkcja sendEmail może zająć mniej linijek kodu. Można usunąć z tej funkcji pętlę foreach a funkcję sendEmail wywoływać w pętli foreach w funkcji storeUsers.
+
+W funkcji sendEmail można usunąć warunek if ponieważ email jest już sprawdzany w warunkach if w funkcjach storeUsers i updateUsers.
+
+Można usunąć "return true" w sendEmail - to nic nie wnosi.
